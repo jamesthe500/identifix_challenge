@@ -4,7 +4,6 @@ $(document).ready(function() {
 
         $.getJSON("http://www.carqueryapi.com/api/0.3/?callback=?", {cmd:"getTrims", keyword:searchTerms}, function(data) {
             $('#results').empty();
-            console.log(data);
 
             var trims = data.Trims;
             if (trims.length == 0){
@@ -12,24 +11,48 @@ $(document).ready(function() {
             }
 
             for(i=0; i < trims.length; i++) {
-                var liters = Math.round(trims[i].model_engine_cc / 100)/10;
+                var returnedCCs = trims[i].model_engine_cc;
+                var returnedEngine = trims[i].model_engine_type;
+                var returnedCyl = trims[i].model_engine_cyl;
+                var returnedTrim = trims[i].model_trim;
+                var returnedTrans = trims[i].model_transmission_type;
+                var returnedPS = trims[i].model_engine_power_ps;
+
+                var engineResult = "";
                 var engineType = "";
-                if (trims[i].model_engine_type == "V"){
-                    engineType = trims[i].model_engine_type + trims[i].model_engine_cyl;
-                } else {
-                    engineType = trims[i].model_engine_type + " " + trims[i].model_engine_cyl;
+                var liters = "";
+
+                if (returnedEngine !== "" && returnedEngine !== null){
+                    if (returnedEngine == "V"){
+                        engineType = returnedEngine + returnedCyl;
+                    } else {
+                        engineType = returnedEngine + " " + returnedCyl;
+                    }
+                    if (returnedCCs !== "" && returnedCCs !== null){
+                        liters = (Math.round(trims[i].model_engine_cc / 100) / 10) + "L ";
+                    }
+
+                    engineResult = "<div class='engine resultLine'>Engine: " + liters + engineType + "</div>"
                 }
+
                 var trimResult = "";
-                if (trims[i].model_trim !== ""){
-                    trimResult = "<div class='trim resultLine'>Trim: " + trims[i].model_trim + "</div>";
+                if (returnedTrim !== "" && returnedTrim !== null){
+                    trimResult = "<div class='trim resultLine'>Trim: " + returnedTrim + "</div>";
                 }
-                $('#results').append("<div class='trimResult resultLine'><div class='headline'>" + trims[i].model_year + " " + trims[i].make_display + " " + trims[i].model_name + "</div>" + trimResult + "<div class='engine resultLine'>Engine: " + liters  + "L " + engineType + "</div></div>")
+
+                var transmissionResult = "";
+                if (returnedTrans !== "" && returnedTrans !== null){
+                    transmissionResult = "<div class='transmission resultLine'>Transmission: " + returnedTrans + "</div>";
+                }
+
+                var powerResult = "";
+                if (returnedPS !== "" && returnedPS !== null){
+                    transmissionResult = "<div class='transmission resultLine'>Maximum horsepower: " + Math.round(returnedPS * 0.9863) + "hp</div>";
+                }
+
+                $('#results').append("<div class='trimResult resultLine'><div class='headline'>" + trims[i].model_year + " " + trims[i].make_display + " " + trims[i].model_name + "</div>" + trimResult + engineResult + transmissionResult + powerResult + "</div>")
 
             }
         });
     }));
 }); // end of doc ready
-
-
-
-/*<div class='roomInfo'><h2 class='room text" + isLongRoom + "'>" + roomArray[i].roomNumber + "</h2><div class='icons'>" + computerIcon(i) + "<div class='icon theCapacityNum" + digits + "'>" + roomArray[i].capacity + "</div></div></div><div class='bookers'><button class='thirty btn btn-book bookerA' id='" + roomArray[i].roomNumber + "'><span class='glyphicon glyphicon-arrow-right' aria-hidden='true'></span>" + thirtyTime + "</button>" + assign60Button(i) + "</div></div></div>")*/
