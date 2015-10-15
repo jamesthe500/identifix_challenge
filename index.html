@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car Trim Finder</title>
+
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.3.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <h1>Car Trim Finder</h1>
+    <label for="searchfield">To find out more about a car, enter a year, make, model, and trim*.</label><br>
+    <input type="text" placeholder="Enter search terms" label="search" id="searchfield">
+    <input type="submit" label="submit" class="btn btn-primary" id="submitbtn">
+
+    <div id="results" id="resultsBlock">
+
+    </div>
+
+</div>
+</body>
+</html>

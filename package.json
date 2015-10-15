@@ -1,0 +1,15 @@
+{
+  "name": "code_challenge",
+  "version": "1.0.0",
+  "description": "Identifix's code challenge",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jim Daniels",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4"
+  }
+}
