@@ -26,7 +26,7 @@ $(document).ready(function() {
                 var liters = "";
 
                 if (returnedEngine !== "" && returnedEngine !== null){
-                    if (returnedEngine == "V"){
+                    if (returnedEngine == "V" || returnedEngine == "W"){
                         engineType = returnedEngine + returnedCyl;
                     } else {
                         engineType = returnedEngine + " " + returnedCyl;
@@ -54,9 +54,10 @@ $(document).ready(function() {
                 }
 
                 $('#results').append("<div class='trimResult'><div class='headline'>" + trims[i].model_year + " " + trims[i].make_display + " " + trims[i].model_name + "</div>" + trimResult + engineResult + transmissionResult + powerResult + "</div>")
-
             }
+
             failNumber = 0;
+
         }).fail(function(){
             $('#results').empty();
             switch (failNumber){
@@ -73,7 +74,7 @@ $(document).ready(function() {
                     failMessage = "The problem is even more persistent than you are, it seems. Please contact the site administrator for assistance.";
             }
             $('#results').append("<div class='trimResult trim'>" + failMessage + "</div>");
-           failNumber ++;
+            failNumber ++;
         });
     }));
 }); // end of doc ready

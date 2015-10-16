@@ -1,6 +1,6 @@
 body {
-    background: #543F26;
-    color: #f5f5f5;
+    background: #36362C;
+    color: #E6D4A7;
 }
 
 .container-fluid {
@@ -28,9 +28,11 @@ input {
 }
 
 #submitbtn {
+    background-color: #825534;
     font-size: 15px;
-    padding: 2px 5px;
+    color: #e6d4a7;
     margin-top: 0;
+    border-color: #482E1A;
 }
 
 #footnote {
@@ -39,12 +41,12 @@ input {
 }
 
 .trimResult {
-	border:1px solid black;
+    border: 1px solid black;
     border-radius: 6px;
     padding: 12px 18px;
     margin: 2px 0;
-    background: #FFBE3D;
-    color: #000;
+    background: #5D917D;
+    color: #E6D4A7;
 }
 
 .headline {
